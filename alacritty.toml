@@ -1,0 +1,9 @@
+shell = { program = "zsh", args = ["-l", "-c", "tmux attach || tmux"]}
+
+[window]
+option_as_alt = "Both"
+
+[font]
+normal = { family = "CaskaydiaMono Nerd Font", style = "SemiLight" }
+bold = { family = "CaskaydiaMono Nerd Font", style = "SemiBold" }
+size = 14
