@@ -91,4 +91,5 @@ brew install --cask postman
 brew install --cask docker
 brew install --cask slack
 brew install --cask zoom
+brew install --cask microsoft-teams
 
