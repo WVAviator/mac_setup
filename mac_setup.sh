@@ -6,6 +6,9 @@ echo "Installing git and the GitHub CLI"
 brew install git
 brew install gh
 
+git config --global core.editor lvim
+git config --global init.defaultBranch main
+
 echo "Installing and configuring Alacritty"
 
 ALACRITTY_CONFIG_URL="https://raw.githubusercontent.com/WVAviator/mac_setup/main/alacritty.toml"
