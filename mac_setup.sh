@@ -66,7 +66,7 @@ LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.
 
 rm -rf ~/.config/lvim
 git clone https://github.com/WVAviator/lvim.git ~/.config/lvim
-echo 'PATH="$PATH:$HOME/.local/bin' >> ~/.zshrc
+echo 'export PATH="$PATH:$HOME/.local/bin' >> ~/.zshrc
 
 echo "Installing SDKMAN and latest Java"
 
@@ -92,4 +92,6 @@ brew install --cask docker
 brew install --cask slack
 brew install --cask zoom
 brew install --cask microsoft-teams
+
+source ~/.zshrc
 
