@@ -23,9 +23,9 @@ echo "Installing Cascadia Mono Nerd Font"
 
 NERD_FONT_URL=https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.0/CascadiaMono.zip
 
-curl -o ~/Downloads/CascadiaMono.zip -L "$NERD_FONT_URL"
-mv ~/Downloads/CascadiaMono.zip ~/Library/Fonts
+curl -o ~/Library/Fonts/CascadiaMono.zip -L "$NERD_FONT_URL"
 unzip ~/Library/Fonts/CascadiaMono.zip -d ~/Library/Fonts
+rm ~/Library/Fonts/CascadiaMono.zip
 
 echo "Installing and configuring tmux"
 
