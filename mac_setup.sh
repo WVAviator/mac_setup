@@ -19,6 +19,14 @@ brew install alacritty
 mkdir -p "$ALACRITTY_CONFIG_DIR"
 curl -o "$ALACRITTY_CONFIG_DIR/$ALACRITTY_CONFIG_NAME" -L "$ALACRITTY_CONFIG_URL"
 
+echo "Installing Cascadia Mono Nerd Font"
+
+NERD_FONT_URL=https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.0/CascadiaMono.zip
+
+curl -o ~/Downloads/CascadiaMono.zip -L "$NERD_FONT_URL"
+mv ~/Downloads/CascadiaMono.zip ~/Library/Fonts
+unzip ~/Library/Fonts/CascadiaMono.zip -d ~/Library/Fonts
+
 echo "Installing and configuring tmux"
 
 TMUX_CONFIG_URL="https://raw.githubusercontent.com/WVAviator/mac_setup/main/.tmux.conf"
