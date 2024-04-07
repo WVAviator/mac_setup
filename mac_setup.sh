@@ -75,9 +75,9 @@ brew install lazygit
 
 LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh) -s -- -y
 
-rm -rf ~/.config/lvim
-git clone https://github.com/WVAviator/lvim.git ~/.config/lvim
-echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.zshrc
+rm -rf "$HOME/.config/lvim"
+git clone https://github.com/WVAviator/lvim.git "$HOME/.config/lvim"
+echo 'export PATH="$PATH:$HOME/.local/bin"' >> "$HOME/.zshrc"
 
 echo "Installing SDKMAN and latest Java"
 
