@@ -12,7 +12,7 @@ git config --global init.defaultBranch main
 echo "Installing and configuring Alacritty"
 
 ALACRITTY_CONFIG_URL="https://raw.githubusercontent.com/WVAviator/mac_setup/main/alacritty.toml"
-ALACRITTY_CONFIG_DIR="~/.config/alacritty"
+ALACRITTY_CONFIG_DIR="$HOME/.config/alacritty"
 ALACRITTY_CONFIG_NAME="alacritty.toml"
 
 brew install alacritty
@@ -23,14 +23,14 @@ echo "Installing Cascadia Mono Nerd Font"
 
 NERD_FONT_URL=https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.0/CascadiaMono.zip
 
-curl -o ~/Library/Fonts/CascadiaMono.zip -L "$NERD_FONT_URL"
-unzip ~/Library/Fonts/CascadiaMono.zip -d ~/Library/Fonts
-rm ~/Library/Fonts/CascadiaMono.zip
+curl -o "$HOME/Library/Fonts/CascadiaMono.zip" -L "$NERD_FONT_URL"
+unzip "$HOME/Library/Fonts/CascadiaMono.zip" -d ~/Library/Fonts
+rm "$HOME/Library/Fonts/CascadiaMono.zip"
 
 echo "Installing and configuring tmux"
 
 TMUX_CONFIG_URL="https://raw.githubusercontent.com/WVAviator/mac_setup/main/.tmux.conf"
-TMUX_CONFIG_PATH="~/.tmux.conf"
+TMUX_CONFIG_PATH="$HOME/.tmux.conf"
 
 brew install tmux
 curl -o "$TMUX_CONFIG_PATH" -L "$TMUX_CONFIG_URL"
@@ -42,8 +42,8 @@ tmux send-keys -t setup "C-b" I
 sleep 20
 tmux kill-session -t setup
 
-chmod u+x ~/.tmux/plugins/tmux-kanagawa/kanagawa.tmux
-chmod u+x ~/.tmux/plugins/tmux-kanagawa/**/*.sh
+chmod u+x "$HOME/.tmux/plugins/tmux-kanagawa/kanagawa.tmux"
+chmod u+x "$HOME/.tmux/plugins/tmux-kanagawa/**/*.sh"
 
 echo "Installing and configuring OhMyZsh"
 
@@ -63,7 +63,7 @@ source ~/.zshrc
 nvm install node
 
 echo "Installing Rust and Cargo"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 echo "Installing Lunarvim and dependencies"
 
@@ -73,11 +73,11 @@ brew install python3
 brew install ripgrep
 brew install lazygit
 
-LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh) -y
+LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh) -s -- -y
 
 rm -rf ~/.config/lvim
 git clone https://github.com/WVAviator/lvim.git ~/.config/lvim
-echo 'export PATH="$PATH:$HOME/.local/bin' >> ~/.zshrc
+echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.zshrc
 
 echo "Installing SDKMAN and latest Java"
 
