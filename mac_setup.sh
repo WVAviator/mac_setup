@@ -35,12 +35,7 @@ TMUX_CONFIG_PATH="$HOME/.tmux.conf"
 brew install tmux
 curl -o "$TMUX_CONFIG_PATH" -L "$TMUX_CONFIG_URL"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-tmux new-session -d -s setup
-sleep 2
-tmux send-keys -t setup "C-b" I
-sleep 20
-tmux kill-session -t setup
+"$HOME/.tmux/plugins/tpm/bin/install_plugins"
 
 chmod u+x "$HOME/.tmux/plugins/tmux-kanagawa/kanagawa.tmux"
 chmod u+x "$HOME/.tmux/plugins/tmux-kanagawa/**/*.sh"
