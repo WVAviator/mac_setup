@@ -8,6 +8,7 @@ brew install gh
 
 git config --global core.editor lvim
 git config --global init.defaultBranch main
+git config --global pull.rebase true
 
 echo "Installing and configuring Alacritty"
 
@@ -23,9 +24,14 @@ echo "Installing Cascadia Mono Nerd Font"
 
 NERD_FONT_URL=https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.0/CascadiaMono.zip
 
-curl -o "$HOME/Library/Fonts/CascadiaMono.zip" -L "$NERD_FONT_URL"
-unzip "$HOME/Library/Fonts/CascadiaMono.zip" -d ~/Library/Fonts
-rm "$HOME/Library/Fonts/CascadiaMono.zip"
+if [ -f "$HOME/Library/Fonts/CascadiaMonoNF-Regular.ttf" ]; then
+  echo "Cascadia Mono Nerd Font is already installed"
+else
+  curl -o "$HOME/Library/Fonts/CascadiaMono.zip" -L "$NERD_FONT_URL"
+  unzip "$HOME/Library/Fonts/CascadiaMono.zip" -d ~/Library/Fonts
+  rm "$HOME/Library/Fonts/CascadiaMono.zip"
+fi
+
 
 echo "Installing and configuring tmux"
 
