@@ -2,6 +2,11 @@
 echo "Installing Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+if [ $? -ne 0 ]; then
+  echo "Homebrew installation failed. Exiting."
+  exit 1
+fi
+
 echo "Installing git and the GitHub CLI"
 brew install git
 brew install gh
