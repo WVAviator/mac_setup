@@ -2,8 +2,11 @@
 echo "Installing Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-if [ $? -ne 0 ]; then
-  echo "Homebrew installation failed. Exiting."
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> "$HOME/.zprofile"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+if ! command -v brew &> /dev/null; then
+  echo "Homebrew failed to install"
   exit 1
 fi
 
