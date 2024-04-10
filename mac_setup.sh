@@ -52,7 +52,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
 
 chmod u+x "$HOME/.tmux/plugins/tmux-kanagawa/kanagawa.tmux"
-chmod u+x "$HOME/.tmux/plugins/tmux-kanagawa/**/*.sh"
+chmod u+x "$HOME/.tmux/plugins/tmux-kanagawa/scripts/*"
 
 echo "Installing and configuring OhMyZsh"
 
