@@ -57,6 +57,8 @@ chmod u+x "$HOME/.tmux/plugins/tmux-kanagawa/scripts/*"
 echo "Installing and configuring OhMyZsh"
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# TODO: This line doesn't work
 sed -i '' 's/^ZSH_THEME=".*"/ZSH_THEME="avit"/' ~/.zshrc || echo 'ZSH_THEME="avit"' >> ~/.zshrc
 
 echo "Installing NVM and Node"
