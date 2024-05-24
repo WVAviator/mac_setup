@@ -6,8 +6,6 @@ TMUX_CONFIG_URL="https://raw.githubusercontent.com/WVAviator/mac_setup/main/.tmu
 TMUX_CONFIG_PATH="$HOME/.tmux.conf"
 TPM_PATH="$HOME/.tmux/plugins/tpm"
 
-curl -s "$UTILITIES_URL" | sh
-
 if ! command -v brew &>/dev/null; then
     echo "Homebrew is required to install or upgrade tmux."
     exit 1
@@ -27,18 +25,18 @@ brew-check() {
   if brew list --formula | grep -q "^$FORMULA\$"; then
       echo "$FORMULA is already installed."
       echo "Upgrading $FORMULA..."
-      brew upgrade "$FORMULA" &>/dev/null
+      brew upgrade "$FORMULA" > /dev/null
   else
       echo "$FORMULA is not installed."
       echo "Installing $FORMULA..."
-      brew install "$FORMULA" &>/dev/null
+      brew install "$FORMULA" > /dev/null
   fi
 }
 
 brew-check "tmux"
 
 echo "Downloading tmux configuration..."
-curl -o "$TMUX_CONFIG_PATH.tmp" -L "$TMUX_CONFIG_URL"
+curl -o "$TMUX_CONFIG_PATH.tmp" -L "$TMUX_CONFIG_URL" > /dev/null
 if [ $? -eq 0 ]; then
     mv "$TMUX_CONFIG_PATH.tmp" "$TMUX_CONFIG_PATH"
     echo "tmux configuration updated successfully."
