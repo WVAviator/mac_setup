@@ -21,21 +21,21 @@ fi
 # Install or upgrade tmux through Homebrew
 
 brew-check() {
-  local FORMULA = "$1"
+  local FORMULA=$1
 
   echo "Checking installation requirements for $FORMULA..."
   if brew list --formula | grep -q "^$FORMULA\$"; then
       echo "$FORMULA is already installed."
       echo "Upgrading $FORMULA..."
-      brew upgrade "$FORMULA"
+      brew upgrade "$FORMULA" &>/dev/null
   else
       echo "$FORMULA is not installed."
       echo "Installing $FORMULA..."
-      brew install "$FORMULA"
+      brew install "$FORMULA" &>/dev/null
   fi
 }
 
-brew-check tmux
+brew-check "tmux"
 
 echo "Downloading tmux configuration..."
 curl -o "$TMUX_CONFIG_PATH.tmp" -L "$TMUX_CONFIG_URL"
@@ -64,9 +64,9 @@ echo "Installing TPM plugins..."
 # Additional setup
 
 echo "Updating script permissions for Kanagawa theme..."
-chmod u+x "$HOME/.tmux/plugins/tmux-kanagawa/kanagawa.tmux"
-chmod u+x "$HOME/.tmux/plugins/tmux-kanagawa/scripts/*"
+chmod u+x $HOME/.tmux/plugins/tmux-kanagawa/kanagawa.tmux
+chmod u+x $HOME/.tmux/plugins/tmux-kanagawa/scripts/*.sh
 
 echo "Installing Extrakto dependencies..."
-brew-check bash
-brew-check fzf
+brew-check "bash"
+brew-check "fzf"
