@@ -23,11 +23,11 @@ brew-check() {
 
   echo "Checking installation requirements for $FORMULA..."
   if brew list --formula | grep -q "^$FORMULA\$"; then
-      echo "$FORMULA is already installed."
+      echo "Formula $FORMULA is already installed."
       echo "Upgrading $FORMULA..."
       brew upgrade "$FORMULA" > /dev/null
   else
-      echo "$FORMULA is not installed."
+      echo "Formula $FORMULA is not installed."
       echo "Installing $FORMULA..."
       brew install "$FORMULA" > /dev/null
   fi
@@ -39,9 +39,9 @@ echo "Downloading tmux configuration..."
 curl -o "$TMUX_CONFIG_PATH.tmp" -L "$TMUX_CONFIG_URL" > /dev/null
 if [ $? -eq 0 ]; then
     mv "$TMUX_CONFIG_PATH.tmp" "$TMUX_CONFIG_PATH"
-    echo "tmux configuration updated successfully."
+    echo "Successfully updated tmux configuration"
 else
-    echo "Failed to download tmux configuration."
+    echo "Failed to download tmux configuration"
     rm "$TMUX_CONFIG_PATH.tmp"
     exit 1
 fi
@@ -68,3 +68,5 @@ chmod u+x $HOME/.tmux/plugins/tmux-kanagawa/scripts/*.sh
 echo "Installing Extrakto dependencies..."
 brew-check "bash"
 brew-check "fzf"
+
+echo "Installation and configuration of tmux complete."
