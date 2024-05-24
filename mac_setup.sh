@@ -43,20 +43,7 @@ else
 fi
 
 echo "Installing and configuring tmux"
-
-TMUX_CONFIG_URL="https://raw.githubusercontent.com/WVAviator/mac_setup/main/.tmux.conf"
-TMUX_CONFIG_PATH="$HOME/.tmux.conf"
-
-brew install tmux
-brew install bash
-brew install fzf
-
-curl -o "$TMUX_CONFIG_PATH" -L "$TMUX_CONFIG_URL"
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-"$HOME/.tmux/plugins/tpm/bin/install_plugins"
-
-chmod u+x "$HOME/.tmux/plugins/tmux-kanagawa/kanagawa.tmux"
-chmod u+x "$HOME/.tmux/plugins/tmux-kanagawa/scripts/*"
+curl -s https://raw.githubusercontent.com/WVAviator/mac_setup/main/tmux.sh | sh
 
 echo "Installing and configuring OhMyZsh"
 
