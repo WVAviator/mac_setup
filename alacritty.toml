@@ -2,6 +2,7 @@ shell = { program = "zsh", args = ["-l", "-c", "tmux attach || tmux"]}
 
 [window]
 option_as_alt = "Both"
+padding = { x = 3, y = 0 }
 
 [font]
 normal = { family = "CaskaydiaMono Nerd Font", style = "SemiLight" }
