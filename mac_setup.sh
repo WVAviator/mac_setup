@@ -2,21 +2,21 @@ echo "Installing Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 (
-	echo
-	echo 'eval "$(/opt/homebrew/bin/brew shellenv)"'
+  echo
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"'
 ) >>"$HOME/.zprofile"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 if ! command -v brew &>/dev/null; then
-	echo "Homebrew failed to install"
-	exit 1
+  echo "Homebrew failed to install"
+  exit 1
 fi
 
 echo "Installing git and the GitHub CLI"
 brew install git
 brew install gh
 
-git config --global core.editor lvim
+git config --global core.editor nvim
 git config --global init.defaultBranch main
 git config --global pull.rebase true
 
@@ -26,24 +26,26 @@ ALACRITTY_CONFIG_URL="https://raw.githubusercontent.com/WVAviator/mac_setup/main
 ALACRITTY_CONFIG_DIR="$HOME/.config/alacritty"
 ALACRITTY_CONFIG_NAME="alacritty.toml"
 
-brew install alacritty
+brew install --cask alacritty --no-quarantine
 mkdir -p "$ALACRITTY_CONFIG_DIR"
 curl -o "$ALACRITTY_CONFIG_DIR/$ALACRITTY_CONFIG_NAME" -L "$ALACRITTY_CONFIG_URL"
+
+alacritty migrate
 
 echo "Installing Cascadia Mono Nerd Font"
 
 NERD_FONT_URL=https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.0/CascadiaMono.zip
 
 if [ -f "$HOME/Library/Fonts/CascadiaMonoNF-Regular.ttf" ]; then
-	echo "Cascadia Mono Nerd Font is already installed"
+  echo "Cascadia Mono Nerd Font is already installed"
 else
-	curl -o "$HOME/Library/Fonts/CascadiaMono.zip" -L "$NERD_FONT_URL"
-	unzip "$HOME/Library/Fonts/CascadiaMono.zip" -d ~/Library/Fonts
-	rm "$HOME/Library/Fonts/CascadiaMono.zip"
+  curl -o "$HOME/Library/Fonts/CascadiaMono.zip" -L "$NERD_FONT_URL"
+  unzip "$HOME/Library/Fonts/CascadiaMono.zip" -d ~/Library/Fonts
+  rm "$HOME/Library/Fonts/CascadiaMono.zip"
 fi
 
 echo "Installing and configuring tmux"
-curl -s https://raw.githubusercontent.com/WVAviator/mac_setup/main/tmux.sh | sh
+curl -s https://raw.githubusercontent.com/WVAviator/mac_setup/main/tmux.sh | bash
 
 echo "Installing and configuring OhMyZsh"
 
@@ -56,8 +58,8 @@ echo "Installing NVM and Node"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 if ! grep -q "NVM_DIR" ~/.zshrc; then
-	# The nvm script is supposed to add this automatically, but just in case
-	echo 'export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+  # The nvm script is supposed to add this automatically, but just in case
+  echo 'export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm' >>~/.zshrc
 fi
 
@@ -75,10 +77,11 @@ brew install python3
 brew install ripgrep
 brew install lazygit
 
-LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh) -s -- -y
+brew install neovim
 
-rm -rf "$HOME/.config/lvim"
-git clone https://github.com/WVAviator/lvim.git "$HOME/.config/lvim"
+echo "Installing Neovim with Lazyvim config"
+git clone https://github.com/WVAviator/lazyvim.git "$HOME/.config/nvim"
+
 echo 'export PATH="$PATH:$HOME/.local/bin"' >>"$HOME/.zshrc"
 
 echo "Installing SDKMAN and latest Java"
