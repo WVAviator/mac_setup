@@ -96,6 +96,11 @@ echo "Installing standard command line applications"
 
 brew install awscli
 brew install fd
+brew install curlie
+
+echo "alias find='fd'" >>"$HOME/.zshrc"
+echo "alias grep='rg'" >>"$HOME/.zshrc"
+echo "alias curl='curlie'" >>"$HOME/.zshrc"
 
 echo "Installing standard GUI applications"
 
