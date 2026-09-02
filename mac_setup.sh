@@ -95,6 +95,7 @@ sdk install maven
 echo "Installing standard command line applications"
 
 brew install awscli
+brew install fd
 
 echo "Installing standard GUI applications"
 
