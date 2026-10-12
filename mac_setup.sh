@@ -77,8 +77,6 @@ brew install python3
 brew install ripgrep
 brew install lazygit
 
-brew install neovim
-
 echo "Installing Neovim with Lazyvim config"
 git clone https://github.com/WVAviator/lazyvim.git "$HOME/.config/nvim"
 
@@ -111,10 +109,12 @@ brew install --cask arc
 brew install --cask jetbrains-toolbox
 brew install --cask intellij-idea
 brew install --cask datagrip
-brew install --cask postman
 brew install --cask docker
 brew install --cask slack
 brew install --cask zoom
 brew install --cask microsoft-teams
+brew install --cask visual-studio-code
+brew install --cask claude-code
+brew install ollama
 
 source ~/.zshrc
